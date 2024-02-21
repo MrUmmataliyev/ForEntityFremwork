@@ -1,4 +1,7 @@
 
+using EntityFremwork_firs.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
 namespace EntityFremwork_firs
 {
     public class Program
@@ -10,7 +13,15 @@ namespace EntityFremwork_firs
             // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options=>
+            {
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString"));
+            }
+            );
+
+
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
