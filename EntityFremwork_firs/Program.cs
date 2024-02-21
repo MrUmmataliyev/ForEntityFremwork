@@ -1,4 +1,5 @@
 
+using EntityFremwork_firs.Applications.ProductService;
 using EntityFremwork_firs.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +21,7 @@ namespace EntityFremwork_firs
             }
             );
 
-
+            builder.Services.AddScoped<IProductService, ProductService>();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
