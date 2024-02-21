@@ -17,10 +17,29 @@ namespace EntityFremwork_firs.Controllers
         }
 
         [HttpPost]
-        public string AddProduct(Product product)
+        public Task<string> AddProduct(Product product)
         {
-            _productService.CreateProductAsync(product);
-            return "yaratildi";
+            
+            return _productService.CreateProductAsync(product);
+        }
+
+        [HttpGet]
+        public Task<List<Product>> GetProduct()
+        {
+
+            return _productService.GetAllProductAsync(); 
+        }
+
+        [HttpPut]
+        public Task<string> UpdateProduct(int id, Product product)
+        {
+
+            return _productService.UpdateProductAsync(id, product);
+        }
+        [HttpDelete]
+        public Task<bool> DeleteProduct(int id)
+        {
+            return _productService.DeleteProductAsync(id);
         }
     }
 }
